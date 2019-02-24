@@ -23,7 +23,7 @@ steps:
 - task: CopyFiles@2
   inputs:
     contents: |
-      '**\build\**'
+      '**/build/**'
       firebase.json
     targetFolder: $(Build.ArtifactStagingDirectory)
 
