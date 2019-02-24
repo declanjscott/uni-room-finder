@@ -20,11 +20,14 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- task: CopyFiles@2
+- task: ArchiveFiles@2
+  displayName: 'Archive files'
   inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)'
-    Contents: |
-      build/static
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/build'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/drop.zip'
+    replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
