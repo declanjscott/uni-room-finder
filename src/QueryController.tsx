@@ -7,9 +7,9 @@ import { IndicatorProps } from "react-select/lib/components/indicators";
 
 class QueryController extends Component {
   options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" }
+    { value: "chocolate", label: "Hilmer Building" },
+    { value: "strawberry", label: "Law Building" },
+    { value: "vanilla", label: "Tyree" }
   ];
 
   render() {
