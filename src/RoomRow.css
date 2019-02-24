@@ -1,0 +1,46 @@
+.room-list {
+  flex-grow: 1;
+  margin-top: 48px;
+}
+
+.room-row {
+  display: flex;
+  height: 50px;
+  margin-bottom: 24px;
+  align-items: center;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+}
+.row-header {
+  height: 100%;
+  border-radius: 12px 0px 0px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(90deg, #2b32b2 0%, #1488cc 130%);
+  min-width: 200px;
+}
+
+.row-header-text {
+  color: white;
+  font-weight: 500;
+  font-size: 29px;
+}
+
+.row-body {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+}
+
+.row-item {
+  display: flex;
+  background-image: linear-gradient(90deg, #2b32b2 0%, #1488cc 130%);
+  border-radius: 22px;
+  height: 28px;
+  color: white;
+  align-items: center;
+  padding-left: 16px;
+  user-select: none;
+}

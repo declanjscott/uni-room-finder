@@ -1,0 +1,41 @@
+.room-title {
+  font-family: HelveticaNeue-Bold;
+  font-size: 60px;
+  color: #ffffff;
+  text-align: left;
+  font-family: HelveticaNeue-Bold;
+  font-size: 60px;
+  background: linear-gradient(90deg, #2b32b2 0%, #1488cc 150%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+}
+
+.room-picker {
+  display: flex;
+  align-items: center;
+}
+
+.room-picker-arrow {
+  height: 28px;
+  width: 28px;
+  margin-left: 16px;
+}
+
+.day-title {
+  font-family: HelveticaNeue-Bold;
+  font-size: 30px;
+  color: #2b32b2;
+  user-select: none;
+}
+
+.day-picker-arrow {
+  margin-left: 9px;
+  margin-right: 9px;
+  height: 16px;
+  width: 16px;
+}
+.day-picker {
+  display: flex;
+  align-items: center;
+}
