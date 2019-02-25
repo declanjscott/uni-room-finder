@@ -1,5 +1,6 @@
 {
   "projects": {
-    "production": "uni-room-finder"
+    "production": "uni-room-finder",
+    "staging": "uni-room-finder-staging"
   }
 }
