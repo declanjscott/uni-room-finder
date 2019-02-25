@@ -8,6 +8,7 @@ import { IndicatorProps } from "react-select/lib/components/indicators";
 class QueryController extends Component {
   options = [
     { value: "hilmer", label: "Hilmer Building" },
+    { value: "quad", label: "Quadrangle Building" },
     { value: "strawberry", label: "Law Building" },
     { value: "vanilla", label: "Tyree Building" }
   ];
