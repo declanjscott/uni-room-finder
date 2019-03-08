@@ -4,14 +4,24 @@ import { DownArrow } from "./DownArrow";
 import Select, { components } from "react-select";
 import { NONAME } from "dns";
 import { IndicatorProps } from "react-select/lib/components/indicators";
+import DatePicker from "./DatePicker";
+import { Building } from "./Buildings";
 
-class QueryController extends Component {
-  options = [
-    { value: "hilmer", label: "Hilmer Building" },
-    { value: "quad", label: "Quadrangle Building" },
-    { value: "strawberry", label: "Law Building" },
-    { value: "vanilla", label: "Tyree Building" }
-  ];
+export interface QueryProps {
+  date: Date;
+  building: Building;
+  onBuildingChange(building: Building): void;
+  onDateChange(date: Date): void;
+  buildings: Building[];
+}
+
+class QueryController extends Component<QueryProps, {}> {
+  newBuildingSelected(buildingId: string) {
+    const building = this.props.buildings.find(
+      building => building.id === buildingId
+    );
+    if (building != null) this.props.onBuildingChange(building);
+  }
 
   render() {
     const customStyles = {
@@ -19,10 +29,9 @@ class QueryController extends Component {
         ...provided,
         fontFamily: "HelveticaNeue-Bold",
         fontSize: "60px",
-        background: "linear-gradient(90deg, #2b32b2 0%, #1488cc 150%)",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-        color: "#ffffff"
+        color: "#2b32b2",
+        fontWeight: 700,
+        backgroundColor: state.isFocused ? "lightgray" : "white"
       }),
       control: (provided: any, state: any) => ({
         ...provided,
@@ -38,15 +47,15 @@ class QueryController extends Component {
         ...provided,
         fontFamily: "HelveticaNeue-Bold",
         fontSize: "60px",
-        background: "linear-gradient(90deg, #2b32b2 0%, #1488cc 150%)",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-        color: "#ffffff"
+        color: "#2b32b2",
+        fontWeight: 700
       }),
       input: (provided: any, state: any) => ({
         fontSize: "60px",
-        //color: "#2b32b2",
+        color: "#2b32b2",
+        fontWeight: 700,
         fontFamily: "HelveticaNeue-Bold"
+
         //background: "linear-gradient(90deg, #2b32b2 0%, #1488cc 150%)",
         //WebkitBackgroundClip: "text"
       }),
@@ -76,28 +85,35 @@ class QueryController extends Component {
 
     return (
       <div className="query-controller">
-        {/*<div className="room-picker">
-          <span className="room-title">Hilmer Building</span>
-          <div className="room-picker-arrow" >
-            <DownArrow />
-          </div>
-	</div>*/}
         <Select
-          options={this.options}
+          options={this.props.buildings.map(building => ({
+            value: building.id,
+            label: building.name
+          }))}
           classNamePrefix="react-select"
           styles={customStyles}
           components={{ DropdownIndicator }}
+          defaultValue={{
+            value: "loading",
+            label: "Loading..."
+          }}
+          value={{
+            value: this.props.building.id,
+            label: this.props.building.name
+          }}
+          onChange={event => {
+            if (event == null || Array.isArray(event)) {
+              throw new Error(
+                "Unexpected type passed to ReactSelect onChange handler"
+              );
+            }
+            this.newBuildingSelected(event.value);
+          }}
         />
-
-        <div className="day-picker">
-          <div className="day-picker-arrow">
-            <DownArrow degrees={90} />
-          </div>
-          <span className="day-title">Today</span>
-          <div className="day-picker-arrow">
-            <DownArrow degrees={-90} />
-          </div>
-        </div>
+        <DatePicker
+          date={this.props.date}
+          onDateChange={(date: Date) => this.props.onDateChange(date)}
+        />
       </div>
     );
   }

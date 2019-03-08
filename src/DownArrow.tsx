@@ -25,9 +25,9 @@ export class DownArrow extends Component<Rotation, {}> {
         <g
           id="Welcome"
           stroke="none"
-          stroke-width="1"
+          strokeWidth="1"
           fill="none"
-          fill-rule="evenodd"
+          fillRule="evenodd"
         >
           <g
             id="Desktop-HD"

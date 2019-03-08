@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import "./App.css";
-import RoomRow, { RoomList } from "./RoomRow";
-import QueryController from "./QueryController";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Buildings from "./Buildings";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <QueryController />
-        <RoomList />
-      </div>
+      <Router>
+        <div className="App">
+          <Route exact path="/" component={Buildings} />
+          <Route path="/buildings/:building" component={Buildings} />
+        </div>
+      </Router>
     );
   }
 }
