@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch
+} from "react-router-dom";
 import Buildings from "./Buildings";
 
 class App extends Component {
@@ -8,8 +13,12 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Route exact path="/" component={Buildings} />
-          <Route path="/buildings/:building" component={Buildings} />
+          <Switch>
+            <Route exact path="/">
+              <Redirect to="/buildings/" />
+            </Route>
+            <Route path="/buildings/:building?" component={Buildings} />
+          </Switch>
         </div>
       </Router>
     );

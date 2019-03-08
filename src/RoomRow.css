@@ -3,22 +3,43 @@
   margin-top: 48px;
 }
 
+.list-header {
+  display: flex;
+  align-items: center;
+  margin-left: 200px;
+  margin-bottom: 16px;
+}
+
+.list-header-item {
+  margin-left: 2px;
+  margin-right: 2px;
+  display: flex;
+  background-color: #2b32b2;
+  border-radius: 5px;
+  height: 28px;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  font-size: 15px;
+}
+
 .room-row {
   display: flex;
   height: 50px;
   margin-bottom: 24px;
   align-items: center;
   background-color: white;
-  border-radius: 12px;
+  border-radius: 5px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
 }
 .row-header {
   height: 100%;
-  border-radius: 12px 0px 0px 12px;
+  border-radius: 5px 0px 0px 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(90deg, #2b32b2 0%, #1488cc 130%);
+  background-color: #2b32b2;
   min-width: 200px;
 }
 
@@ -31,13 +52,15 @@
 .row-body {
   flex-grow: 1;
   display: grid;
-  grid-template-columns: repeat(15, 1fr);
+  grid-template-columns: repeat(13, 1fr);
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .row-item {
   display: flex;
-  background-image: linear-gradient(90deg, #2b32b2 0%, #1488cc 130%);
-  border-radius: 22px;
+  background-color: #2b32b2;
+  border-radius: 5px;
   height: 28px;
   color: white;
   align-items: center;
