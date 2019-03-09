@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-export interface Rotation {
+export interface DownPickerProps {
   degrees: number;
   animated: boolean;
 }
-export class DownArrow extends Component<Rotation, {}> {
+export class DownArrow extends Component<DownPickerProps> {
   public static defaultProps = {
     degrees: 0,
     animated: false

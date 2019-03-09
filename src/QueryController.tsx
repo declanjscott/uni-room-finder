@@ -6,12 +6,15 @@ import { NONAME } from "dns";
 import { IndicatorProps } from "react-select/lib/components/indicators";
 import DatePicker from "./DatePicker";
 import { Building } from "./Buildings";
+import Picker from "./Picker";
 
 export interface QueryProps {
   date: Date;
   building: Building;
   onBuildingChange(building: Building): void;
   onDateChange(date: Date): void;
+  onPickerOpenChange(open: boolean): void;
+  pickerOpen: boolean;
   buildings: Building[];
 }
 
@@ -27,7 +30,6 @@ class QueryController extends Component<QueryProps, {}> {
     const customStyles = {
       option: (provided: any, state: any) => ({
         ...provided,
-        fontFamily: "HelveticaNeue-Bold",
         fontSize: "60px",
         color: "#2b32b2",
         fontWeight: 700,
@@ -45,7 +47,6 @@ class QueryController extends Component<QueryProps, {}> {
       }),
       singleValue: (provided: any, state: any) => ({
         ...provided,
-        fontFamily: "HelveticaNeue-Bold",
         fontSize: "60px",
         color: "#2b32b2",
         fontWeight: 700
@@ -53,11 +54,7 @@ class QueryController extends Component<QueryProps, {}> {
       input: (provided: any, state: any) => ({
         fontSize: "60px",
         color: "#2b32b2",
-        fontWeight: 700,
-        fontFamily: "HelveticaNeue-Bold"
-
-        //background: "linear-gradient(90deg, #2b32b2 0%, #1488cc 150%)",
-        //WebkitBackgroundClip: "text"
+        fontWeight: 700
       }),
       dropdownIndicator: (provided: any, state: any) => ({
         ...provided,
@@ -85,35 +82,27 @@ class QueryController extends Component<QueryProps, {}> {
 
     return (
       <div className="query-controller">
-        <Select
+        <Picker
           options={this.props.buildings.map(building => ({
             value: building.id,
             label: building.name
           }))}
-          classNamePrefix="react-select"
-          styles={customStyles}
-          components={{ DropdownIndicator }}
-          defaultValue={{
-            value: "loading",
-            label: "Loading..."
-          }}
-          value={{
+          selectedOption={{
             value: this.props.building.id,
             label: this.props.building.name
           }}
-          onChange={event => {
-            if (event == null || Array.isArray(event)) {
-              throw new Error(
-                "Unexpected type passed to ReactSelect onChange handler"
-              );
-            }
-            this.newBuildingSelected(event.value);
+          onOptionChange={option => this.newBuildingSelected(option.value)}
+          onPickerOpen={open => {
+            this.props.onPickerOpenChange(open);
           }}
+          pickerOpen={this.props.pickerOpen}
         />
-        <DatePicker
-          date={this.props.date}
-          onDateChange={(date: Date) => this.props.onDateChange(date)}
-        />
+        {!this.props.pickerOpen && (
+          <DatePicker
+            date={this.props.date}
+            onDateChange={(date: Date) => this.props.onDateChange(date)}
+          />
+        )}
       </div>
     );
   }

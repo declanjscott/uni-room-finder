@@ -1,0 +1,42 @@
+.picker {
+}
+
+.picker-toggle-button {
+  height: 40px;
+  width: 40px;
+  transition: 300ms ease-in-out;
+  margin-left: 16px;
+}
+
+.input-area {
+  display: flex;
+  align-items: center;
+}
+
+.input-area .selected-option {
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 60px;
+  color: #2b32b2;
+  font-weight: 700;
+}
+
+.options-dropdown {
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+  max-height: 10000px;
+  transition: all 0.3s ease-in-out;
+}
+
+.options-dropdown.no-height {
+  max-height: 0;
+}
+
+.options-dropdown-item {
+  font-size: 60px;
+  color: #2b32b2;
+  font-weight: 700;
+  padding-top: 8px;
+}

@@ -78,13 +78,13 @@ class RoomRow extends Component<RoomRowProps, {}> {
               ))
           ) : (
             <div
-              className="row-item"
+              className="row-item error"
               style={{
-                gridColumnStart: "4",
-                gridColumnEnd: `span 8`
+                gridColumnStart: "5",
+                gridColumnEnd: `span 5`
               }}
             >
-              <span>This room is not free all day!</span>
+              <span>{this.props.room.name} room is not free today</span>
             </div>
           )}
         </div>

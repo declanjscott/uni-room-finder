@@ -30,6 +30,8 @@ export interface AppState {
   date: Date;
   rooms: Room[];
   freePeriods: FreePeriod[];
+  pickerOpen: boolean;
+  buildingsLoaded: boolean;
 }
 class Rooms extends Component<{}, AppState> {
   constructor(props: any) {
@@ -39,7 +41,9 @@ class Rooms extends Component<{}, AppState> {
       date: new Date(),
       building: { id: "loading", name: "Loading..." },
       rooms: [],
-      freePeriods: []
+      freePeriods: [],
+      pickerOpen: false,
+      buildingsLoaded: false
     };
     props.match.params.building;
   }
@@ -48,6 +52,7 @@ class Rooms extends Component<{}, AppState> {
     firebase
       .firestore()
       .collection("buildings")
+      .orderBy("name")
       .get()
       .then(querySnapshot => {
         const buildings: Building[] = querySnapshot.docs.map(building => ({
@@ -68,6 +73,7 @@ class Rooms extends Component<{}, AppState> {
           name: room.data().name,
           building_id: room.data().building_code
         }));
+        this.setState({ buildingsLoaded: true });
         this.setState({ rooms: rooms });
       });
   }
@@ -102,31 +108,39 @@ class Rooms extends Component<{}, AppState> {
   }
 
   render() {
-    return (
-      <div className="rooms-view">
-        <QueryController
-          buildings={this.state.buildings}
-          building={this.state.building}
-          date={this.state.date}
-          onBuildingChange={(building: Building) => {
-            this.setState({ building: building }, () =>
-              this.updateRoomAvailabilities()
-            );
-          }}
-          onDateChange={(date: Date) => {
-            this.setState({ date: date }, () =>
-              this.updateRoomAvailabilities()
-            );
-          }}
-        />
-        <RoomList
-          rooms={this.state.rooms.filter(
-            room => room.building_id == this.state.building.id
+    if (this.state.buildingsLoaded) {
+      return (
+        <div className="rooms-view">
+          <QueryController
+            buildings={this.state.buildings}
+            building={this.state.building}
+            date={this.state.date}
+            onBuildingChange={(building: Building) => {
+              this.setState({ building: building }, () =>
+                this.updateRoomAvailabilities()
+              );
+            }}
+            onDateChange={(date: Date) => {
+              this.setState({ date: date }, () =>
+                this.updateRoomAvailabilities()
+              );
+            }}
+            pickerOpen={this.state.pickerOpen}
+            onPickerOpenChange={open => this.setState({ pickerOpen: open })}
+          />
+          {!this.state.pickerOpen && (
+            <RoomList
+              rooms={this.state.rooms.filter(
+                room => room.building_id == this.state.building.id
+              )}
+              freePeriods={this.state.freePeriods}
+            />
           )}
-          freePeriods={this.state.freePeriods}
-        />
-      </div>
-    );
+        </div>
+      );
+    } else {
+      return <div className="app-loading">Loading...</div>;
+    }
   }
 }
 

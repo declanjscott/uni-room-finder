@@ -15,3 +15,9 @@ body {
     padding: 64px;
   }
 }
+
+.app-loading {
+  font-size: 60px;
+  color: #2b32b2;
+  font-weight: 700;
+}
