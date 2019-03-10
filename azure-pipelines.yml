@@ -18,7 +18,24 @@ steps:
 - script: |
     npm install
     npm run build
-  displayName: 'npm install and build'
+  displayName: 'Build'
+
+- script: npm run test:ci
+  displayName: "Run tests"
+
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testRunner: JUnit
+    testResultsFiles: 'test/junit.xml'
+  displayName: 'Publish test results'
+
+- task: PublishCodeCoverageResults@1
+  inputs: 
+    codeCoverageTool: Cobertura
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/coverage/'
+  displayName: 'Publish code coverage results'
 
 - task: CopyFiles@2
   inputs:
@@ -26,6 +43,7 @@ steps:
       **/build/**
       firebase.json
     targetFolder: $(Build.ArtifactStagingDirectory)
+  displayName: 'Copy build artifacts'
 
 - task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact'
+  displayName: 'Publish build artifacts'
