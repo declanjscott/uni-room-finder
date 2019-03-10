@@ -84,7 +84,7 @@ class RoomRow extends Component<RoomRowProps, {}> {
                 gridColumnEnd: `span 5`
               }}
             >
-              <span>{this.props.room.name} room is not free today</span>
+              <span>{this.props.room.name} is not free today</span>
             </div>
           )}
         </div>

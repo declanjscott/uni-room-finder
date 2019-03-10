@@ -2,7 +2,7 @@ import React, { Component, KeyboardEvent } from "react";
 import "./App.css";
 import RoomRow, { RoomList } from "./RoomRow";
 import QueryController from "./QueryController";
-import firebase from "./firebase";
+import firebase from "../firebase";
 
 export interface Building {
   name: string;
