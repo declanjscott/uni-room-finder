@@ -20,7 +20,9 @@ steps:
     npm run build
   displayName: 'Build'
 
-- script: npm run test:ci
+- script: |
+   npm run test:ci
+   npm run posttest
   displayName: "Run tests"
 
 - task: PublishTestResults@2
