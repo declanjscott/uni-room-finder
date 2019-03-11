@@ -111,23 +111,26 @@ class Rooms extends Component<{}, AppState> {
     if (this.state.buildingsLoaded) {
       return (
         <div className="rooms-view">
-          <QueryController
-            buildings={this.state.buildings}
-            building={this.state.building}
-            date={this.state.date}
-            onBuildingChange={(building: Building) => {
-              this.setState({ building: building }, () =>
-                this.updateRoomAvailabilities()
-              );
-            }}
-            onDateChange={(date: Date) => {
-              this.setState({ date: date }, () =>
-                this.updateRoomAvailabilities()
-              );
-            }}
-            pickerOpen={this.state.pickerOpen}
-            onPickerOpenChange={open => this.setState({ pickerOpen: open })}
-          />
+          <div className="top-bar">
+            <QueryController
+              buildings={this.state.buildings}
+              building={this.state.building}
+              date={this.state.date}
+              onBuildingChange={(building: Building) => {
+                this.setState({ building: building }, () =>
+                  this.updateRoomAvailabilities()
+                );
+              }}
+              onDateChange={(date: Date) => {
+                this.setState({ date: date }, () =>
+                  this.updateRoomAvailabilities()
+                );
+              }}
+              pickerOpen={this.state.pickerOpen}
+              onPickerOpenChange={open => this.setState({ pickerOpen: open })}
+            />
+            <div className="current-term-info">Trimester 1 2019</div>
+          </div>
           {!this.state.pickerOpen && (
             <RoomList
               rooms={this.state.rooms.filter(

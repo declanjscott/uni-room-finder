@@ -1,0 +1,33 @@
+.footer {
+  background-color: #fafbfc;
+  color: #586069;
+  height: 100px;
+  display: flex;
+  padding-left: 200px;
+  padding-right: 200px;
+  align-items: center;
+}
+
+.footer-credit {
+  flex-grow: 1;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+
+.footer-link {
+  height: 20px;
+}
+.footer-link:not(:last-child) {
+  margin-right: 16px;
+}
+
+svg {
+  fill: #586069;
+}
+a {
+  text-decoration: none;
+  color: #586069;
+}

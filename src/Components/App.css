@@ -1,23 +1,41 @@
-body {
-  background-color: #f4f4f4;
-}
-
-.App {
-  display: flex;
-  flex-direction: column;
+.content {
   padding: 64px;
   padding-left: 200px;
   padding-right: 200px;
 }
-
 @media (max-width: 1200px) {
-  .App {
+  .content {
     padding: 64px;
   }
+}
+
+.app {
+  display: grid;
+  grid-template-areas:
+    "content"
+    "footer";
+
+  grid-template-columns: 1frx;
+  grid-template-rows: 1fr auto;
+  grid-gap: 10px;
+  height: 100vh;
 }
 
 .app-loading {
   font-size: 60px;
   color: #2b32b2;
   font-weight: 700;
+}
+
+.top-bar {
+  display: flex;
+  align-items: flex-end;
+}
+
+.current-term-info {
+  color: #586069;
+}
+
+.query-controller {
+  flex-grow: 1;
 }
