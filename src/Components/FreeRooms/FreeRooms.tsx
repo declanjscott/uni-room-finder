@@ -1,4 +1,4 @@
-import React, { Component, KeyboardEvent } from "react";
+import React, { Component } from "react";
 import "./FreeRooms.css";
 import { RoomList } from "../RoomRow/RoomRow";
 import QueryController from "../QueryController/QueryController";
@@ -35,7 +35,6 @@ class FreeRooms extends Component<{}, FreeRoomState> {
       buildingsLoaded: false,
       helpModalIsOpen: false
     };
-    //props.match.params.building;
   }
 
   componentDidMount() {
@@ -185,7 +184,10 @@ class AboutModal extends Component<ModalProps> {
       >
         <p>
           This app shows you free rooms on campus at UNSW, according to the{" "}
-          <a href="https://nss.cse.unsw.edu.au/tt/">timetable</a>.
+          <a target="_blank" href="https://nss.cse.unsw.edu.au/tt/">
+            timetable
+          </a>
+          .
         </p>
         <p>
           There are lots of free rooms across campus throughout the day, so
@@ -200,7 +202,14 @@ class AboutModal extends Component<ModalProps> {
         </p>
         <p>
           I (Declan Scott) made this project to learn React and hopefully help
-          people enjoy their time on campus. ❤️
+          people enjoy their time on campus. ❤️ It's open source so check it out
+          on{" "}
+          <a
+            target="_blank"
+            href="https://github.com/declanjscott/uni-room-finder"
+          >
+            GitHub
+          </a>
         </p>
       </Modal>
     );

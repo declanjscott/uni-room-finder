@@ -10,13 +10,18 @@ class Footer extends Component {
     return (
       <div className="footer">
         <div className="footer-author">
-          <a href="https://www.linkedin.com/in/declanjscott/" title="LinkedIn">
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/in/declanjscott/"
+            title="LinkedIn"
+          >
             Declan Scott
           </a>
         </div>
         <div className="footer-links">
           <div className="footer-link">
             <a
+              target="_blank"
               href="https://dev.azure.com/declanjscott/uni-room-finder"
               title="Azure DevOps"
             >
@@ -28,7 +33,10 @@ class Footer extends Component {
             </a>
           </div>
           <div className="footer-link">
-            <a href="https://github.com/declanjscott/uni-room-finder">
+            <a
+              target="_blank"
+              href="https://github.com/declanjscott/uni-room-finder"
+            >
               <svg
                 height="20"
                 viewBox="0 0 16 16"

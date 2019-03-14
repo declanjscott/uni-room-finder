@@ -11,24 +11,25 @@ Uni Room Finder looks at the official campus timetable to find tutorial rooms an
 These rooms are great to study in! Find one and go have a look.
 
 ## Tech
-* CI is set up through Azure Pipelines.
-* Built with React and Firebase 
+
+- CI is set up through Azure Pipelines.
+- Built with React and Firebase
 
 ## Current status
 
 Basic functionality is complete, but it is very much still a work in progress. I am working on design and extra functionality to make it easier to use.
 
 ### Roadmap
-* Design changes
-* Animations
-* Empty state for lists
-* User friendly instructions
-* Display which trimester the tool is ready for
 
+- Transition animations
+- Empty state for lists
+- Tests
+- Routing
 
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-
 ## License
+
 [MIT](https://choosealicense.com/licenses/mit/)

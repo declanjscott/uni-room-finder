@@ -2,6 +2,8 @@
   margin-left: 16px;
   padding-left: 16px;
   padding-right: 16px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   display: flex;
   background-color: #2b32b2;
   border-radius: 5px;
