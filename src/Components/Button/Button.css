@@ -1,0 +1,17 @@
+.button {
+  margin-left: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  display: flex;
+  background-color: #2b32b2;
+  border-radius: 5px;
+  height: 28px;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}

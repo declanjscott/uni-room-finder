@@ -1,9 +1,11 @@
 import React, { Component, KeyboardEvent } from "react";
 import "./FreeRooms.css";
-import RoomRow, { RoomList } from "../RoomRow/RoomRow";
+import { RoomList } from "../RoomRow/RoomRow";
 import QueryController from "../QueryController/QueryController";
 import firebase from "../../firebase";
 import { FreePeriod, Building, Room } from "../../Interfaces";
+import Modal, { ModalProps } from "../Modal/Modal";
+import Button from "../Button/Button";
 
 export interface FreeRoomState {
   buildings: Building[];
@@ -13,6 +15,7 @@ export interface FreeRoomState {
   freePeriods: FreePeriod[];
   pickerOpen: boolean;
   buildingsLoaded: boolean;
+  helpModalIsOpen: boolean;
 }
 
 /**
@@ -29,9 +32,10 @@ class FreeRooms extends Component<{}, FreeRoomState> {
       rooms: [],
       freePeriods: [],
       pickerOpen: false,
-      buildingsLoaded: false
+      buildingsLoaded: false,
+      helpModalIsOpen: false
     };
-    props.match.params.building;
+    //props.match.params.building;
   }
 
   componentDidMount() {
@@ -119,7 +123,13 @@ class FreeRooms extends Component<{}, FreeRoomState> {
               pickerOpen={this.state.pickerOpen}
               onPickerOpenChange={open => this.setState({ pickerOpen: open })}
             />
-            <div className="current-term-info">Trimester 1 2019</div>
+            <div className="info-area">
+              <div className="current-term-info">Trimester 1 2019</div>
+              <Button
+                onClick={() => this.setState({ helpModalIsOpen: true })}
+                text="About"
+              />
+            </div>
           </div>
           {!this.state.pickerOpen && (
             <RoomList
@@ -129,6 +139,11 @@ class FreeRooms extends Component<{}, FreeRoomState> {
               freePeriods={this.state.freePeriods}
             />
           )}
+          <AboutModal
+            visible={this.state.helpModalIsOpen}
+            title="UNSW Free Room Finder"
+            onCloseClicked={() => this.setState({ helpModalIsOpen: false })}
+          />
         </div>
       );
     } else {
@@ -159,3 +174,35 @@ class FreeRooms extends Component<{}, FreeRoomState> {
 }
 
 export default FreeRooms;
+
+class AboutModal extends Component<ModalProps> {
+  render() {
+    return (
+      <Modal
+        visible={this.props.visible}
+        title={this.props.title}
+        onCloseClicked={this.props.onCloseClicked}
+      >
+        <p>
+          This app shows you free rooms on campus at UNSW, according to the{" "}
+          <a href="https://nss.cse.unsw.edu.au/tt/">timetable</a>.
+        </p>
+        <p>
+          There are lots of free rooms across campus throughout the day, so
+          hopefully this app helps you find a spot to study outside the library.
+        </p>
+        <p>
+          If any data is wrong (or you would like to help make the app look
+          pretty 🎨) please contact me at{" "}
+          <a href="mailto:declan.scott@student.unsw.edu.au" target="_top">
+            my uni email address.
+          </a>
+        </p>
+        <p>
+          I (Declan Scott) made this project to learn React and hopefully help
+          people enjoy their time on campus. ❤️
+        </p>
+      </Modal>
+    );
+  }
+}

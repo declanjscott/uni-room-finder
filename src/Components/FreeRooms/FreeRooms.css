@@ -1,6 +1,6 @@
 .top-bar {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .current-term-info {
@@ -9,4 +9,18 @@
 
 .query-controller {
   flex-grow: 1;
+}
+
+.info-area {
+  display: flex;
+  align-items: center;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-heading {
+  display: flex;
 }

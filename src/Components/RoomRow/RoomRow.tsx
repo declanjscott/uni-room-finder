@@ -8,12 +8,34 @@ export interface RoomListProps {
 }
 
 /**
- * The list of rooms in a buiolding
+ * The list of rooms in a building
  */
 export class RoomList extends Component<RoomListProps, {}> {
   render() {
     return (
       <div className="room-list">
+        <div className="list-header">
+          <div className="row-body">
+            {[...Array(10)].map((x, i) => (
+              <div
+                key={i}
+                className="list-header-item"
+                style={{
+                  gridColumnStart: i * 2 + 1,
+                  gridColumnEnd: `span 2`
+                }}
+              >
+                <span>
+                  {i + 9 > 12
+                    ? `${i + 9 - 12}pm`
+                    : i + 9 === 12
+                    ? `${i + 9}pm`
+                    : `${i + 9}am`}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
         {this.props.rooms.map(room => (
           <RoomRow
             key={room.id}
