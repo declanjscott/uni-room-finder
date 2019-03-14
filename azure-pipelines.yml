@@ -20,6 +20,7 @@ steps:
 
 - script: npm run build
   displayName: 'Build'
+  failOnStderr: true
 
 - script: |
    npm run test:ci
