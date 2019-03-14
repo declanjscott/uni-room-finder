@@ -1,0 +1,12 @@
+.top-bar {
+  display: flex;
+  align-items: flex-end;
+}
+
+.current-term-info {
+  color: #586069;
+}
+
+.query-controller {
+  flex-grow: 1;
+}

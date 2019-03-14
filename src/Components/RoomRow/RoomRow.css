@@ -53,9 +53,19 @@
 .row-body {
   flex-grow: 1;
   display: grid;
-  grid-template-columns: repeat(13, 1fr);
+  grid-template-columns: repeat(20, 1fr);
   padding-left: 16px;
   padding-right: 16px;
+}
+
+.row-body-empty {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fafbfc;
+  color: #586069;
+  height: 100%;
 }
 
 .row-item {
@@ -65,11 +75,11 @@
   height: 28px;
   color: white;
   align-items: center;
-  padding-left: 16px;
   user-select: none;
+  padding-left: 16px;
 }
 
-.row-item.error {
+.row-item-center {
+  padding-left: 0px;
   justify-content: center;
-  background-color: #586069;
 }

@@ -1,19 +1,22 @@
 import React, { Component } from "react";
 import "./Picker.css";
-import { DownArrow } from "./DownArrow";
+import { DownArrow } from "../DownArrow/DownArrow";
 
-export interface Option {
+export interface PickerOption {
   value: string;
   label: string;
 }
 export interface PickerProps {
-  options: Option[];
-  onOptionChange(option: Option): void;
+  options: PickerOption[];
+  onOptionChange(option: PickerOption): void;
   onPickerOpen(open: boolean): void;
   pickerOpen: boolean;
-  selectedOption: Option;
+  selectedOption: PickerOption;
 }
 
+/**
+ * A dropdown picker which lets users choose from a list of options
+ */
 class Picker extends Component<PickerProps> {
   constructor(props: any) {
     super(props);
@@ -22,7 +25,7 @@ class Picker extends Component<PickerProps> {
     };
   }
 
-  private selectOption(option: Option) {
+  private selectOption(option: PickerOption) {
     this.props.onPickerOpen(false);
     this.props.onOptionChange(option);
     window.scrollTo(0, 0);
@@ -53,6 +56,8 @@ class Picker extends Component<PickerProps> {
         {
           <div
             className={`options-dropdown ${
+              // if the picker is not open, we give it a no height class.
+              // This hides the dropdown.
               this.props.pickerOpen ? "" : "no-height"
             }`}
           >

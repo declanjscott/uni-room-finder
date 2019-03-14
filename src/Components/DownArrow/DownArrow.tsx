@@ -5,7 +5,10 @@ export interface DownPickerProps {
 }
 export class DownArrow extends Component<DownPickerProps> {
   public static defaultProps = {
-    degrees: 0,
+    //the arrow points down by default,
+    //but can be rotated
+    rotation_degrees: 0,
+    //should the arrow rotate its rotation changes?
     animated: false
   };
   render() {

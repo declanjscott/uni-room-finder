@@ -1,30 +1,11 @@
 import React, { Component, KeyboardEvent } from "react";
-import "./App.css";
-import RoomRow, { RoomList } from "./RoomRow";
-import QueryController from "./QueryController";
-import firebase from "../firebase";
+import "./FreeRooms.css";
+import RoomRow, { RoomList } from "../RoomRow/RoomRow";
+import QueryController from "../QueryController/QueryController";
+import firebase from "../../firebase";
+import { FreePeriod, Building, Room } from "../../Interfaces";
 
-export interface Building {
-  name: string;
-  id: string;
-}
-
-export interface Room {
-  name: string;
-  id: string;
-  building_id: string;
-}
-
-export interface FreePeriod {
-  start: Date;
-  end: Date;
-  room_id: string;
-  building_id: string;
-  id: string;
-  duration: number;
-}
-
-export interface AppState {
+export interface FreeRoomState {
   buildings: Building[];
   building: Building;
   date: Date;
@@ -33,7 +14,12 @@ export interface AppState {
   pickerOpen: boolean;
   buildingsLoaded: boolean;
 }
-class Rooms extends Component<{}, AppState> {
+
+/**
+ *
+ */
+
+class FreeRooms extends Component<{}, FreeRoomState> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -101,8 +87,12 @@ class Rooms extends Component<{}, AppState> {
           end: free_period.data().end_free.toDate(),
           duration: free_period.data().duration,
           room_id: free_period.data().room_code,
-          building_id: free_period.data().building_code
+          building_id: free_period.data().building_code,
+          visible: true
         }));
+        free_periods = free_periods.map(free_period =>
+          this.trimPeriodToDisplayedhours(free_period)
+        );
         this.setState({ freePeriods: free_periods });
       });
   }
@@ -145,6 +135,27 @@ class Rooms extends Component<{}, AppState> {
       return <div className="app-loading">Loading...</div>;
     }
   }
+
+  trimPeriodToDisplayedhours(period: FreePeriod): FreePeriod {
+    if (period.end.getHours() <= 9) {
+      period.visible = false;
+    } else if (period.start.getHours() < 9) {
+      let period_reduced_by = 9 - period.start.getHours();
+      period.duration = period.duration - period_reduced_by * 60;
+      period.start.setHours(9);
+    }
+    if (period.start.getHours() >= 19) {
+      period.visible = false;
+    } else if (period.end.getHours() > 19) {
+      let period_reduced_by = period.end.getHours() - 19;
+      period.duration = period.duration - period_reduced_by * 60;
+      period.end.setHours(19);
+    }
+    if (period.duration == 0) {
+      period.visible = false;
+    }
+    return period;
+  }
 }
 
-export default Rooms;
+export default FreeRooms;

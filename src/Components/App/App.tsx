@@ -6,9 +6,12 @@ import {
   Redirect,
   Switch
 } from "react-router-dom";
-import Buildings from "./Buildings";
-import Footer from "./Footer";
+import Buildings from "../FreeRooms/FreeRooms";
+import Footer from "../Footer/Footer";
 
+/**
+ * App loads the FreeRooms view, and the Footer.
+ */
 class App extends Component {
   render() {
     return (

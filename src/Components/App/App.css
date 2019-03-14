@@ -7,6 +7,10 @@
   .content {
     padding: 64px;
   }
+  .footer {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
 }
 
 .app {
@@ -25,17 +29,4 @@
   font-size: 60px;
   color: #2b32b2;
   font-weight: 700;
-}
-
-.top-bar {
-  display: flex;
-  align-items: flex-end;
-}
-
-.current-term-info {
-  color: #586069;
-}
-
-.query-controller {
-  flex-grow: 1;
 }
