@@ -123,7 +123,7 @@ class FreeRooms extends Component<{}, FreeRoomState> {
               onPickerOpenChange={open => this.setState({ pickerOpen: open })}
             />
             <div className="info-area">
-              <div className="current-term-info">Trimester 1 2019</div>
+              <div className="current-term-info">Trimester 1 2020</div>
               <Button
                 onClick={() => this.setState({ helpModalIsOpen: true })}
                 text="About"

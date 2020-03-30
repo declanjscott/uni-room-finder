@@ -122,7 +122,9 @@ class RoomRow extends Component<RoomRowProps, {}> {
 
   getPeriodStartColumn(period: FreePeriod) {
     // the grid starts at 9am so we return the hour relative to 9am
-    return (period.start.getHours() - 9) * 2 + period.start.getMinutes() / 30;
+    return (
+      (period.start.getHours() - 9) * 2 + 1 + period.start.getMinutes() / 30
+    );
   }
 
   getPeriodNumSpans(period: FreePeriod) {
