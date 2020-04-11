@@ -2,6 +2,10 @@
 
 [Uni Room Finder](https://uni-room-finder.firebaseapp.com) is a webapp which helps you find empty rooms at UNSW.
 
+ 
+
+![Screenshot](app-screenshot.png)
+
 ## Why?
 
 There are lots of study spaces at UNSW, but it can be hard to find one that's free.
