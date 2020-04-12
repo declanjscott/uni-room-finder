@@ -15,16 +15,16 @@ steps:
     versionSpec: '8.x'
   displayName: 'Install Node.js'
 
-- script: npm install
-  displayName: 'Install npm packages'
+- script: yarn install
+  displayName: 'Install yarn packages'
 
-- script: npm run build
+- script: yarn run build
   displayName: 'Build'
   failOnStderr: true
 
 - script: |
-   npm run test:ci
-   npm run posttest
+   yarn run test:ci
+   yarn run posttest
   displayName: "Run tests"
 
 - task: PublishTestResults@2
