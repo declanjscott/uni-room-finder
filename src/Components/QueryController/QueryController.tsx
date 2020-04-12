@@ -1,9 +1,5 @@
 import React, { Component } from "react";
 import "./QueryController.css";
-import { DownArrow } from "../DownArrow/DownArrow";
-import Select, { components } from "react-select";
-import { NONAME } from "dns";
-import { IndicatorProps } from "react-select/lib/components/indicators";
 import DatePicker from "../DatePicker/DatePicker";
 import { Building } from "../../Interfaces";
 import Picker from "../Picker/Picker";

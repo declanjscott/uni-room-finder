@@ -12,6 +12,7 @@ class Footer extends Component {
         <div className="footer-author">
           <a
             target="_blank"
+            rel="noopener noreferrer"
             href="https://www.linkedin.com/in/declanjscott/"
             title="LinkedIn"
           >
@@ -22,6 +23,7 @@ class Footer extends Component {
           <div className="footer-link">
             <a
               target="_blank"
+              rel="noopener noreferrer"
               href="https://dev.azure.com/declanjscott/uni-room-finder"
               title="Azure DevOps"
             >
@@ -35,6 +37,7 @@ class Footer extends Component {
           <div className="footer-link">
             <a
               target="_blank"
+              rel="noopener noreferrer"
               href="https://github.com/declanjscott/uni-room-finder"
             >
               <svg

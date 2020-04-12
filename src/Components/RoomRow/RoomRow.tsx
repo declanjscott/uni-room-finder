@@ -41,7 +41,7 @@ export class RoomList extends Component<RoomListProps, {}> {
             key={room.id}
             room={room}
             freePeriods={this.props.freePeriods.filter(
-              period => period.room_id == room.id
+              period => period.room_id === room.id
             )}
           />
         ))}
@@ -66,7 +66,7 @@ class RoomRow extends Component<RoomRowProps, {}> {
         </div>
         <div
           className={
-            this.props.freePeriods.filter(period => period.visible).length == 0
+            this.props.freePeriods.filter(period => period.visible).length === 0
               ? "row-body-empty"
               : "row-body"
           }
@@ -93,7 +93,7 @@ class RoomRow extends Component<RoomRowProps, {}> {
                 )
             )}
 
-          {this.props.freePeriods.filter(period => period.visible).length ==
+          {this.props.freePeriods.filter(period => period.visible).length ===
             0 && <span>{this.props.room.name} is not free today</span>}
         </div>
       </div>
@@ -101,7 +101,7 @@ class RoomRow extends Component<RoomRowProps, {}> {
   }
 
   static hourToString(hour: number) {
-    if (hour == 12) {
+    if (hour === 12) {
       return "12pm";
     } else if (hour < 12) {
       return `${hour}am`;

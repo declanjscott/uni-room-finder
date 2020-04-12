@@ -133,7 +133,7 @@ class FreeRooms extends Component<{}, FreeRoomState> {
           {!this.state.pickerOpen && (
             <RoomList
               rooms={this.state.rooms.filter(
-                room => room.building_id == this.state.building.id
+                room => room.building_id === this.state.building.id
               )}
               freePeriods={this.state.freePeriods}
             />
@@ -165,7 +165,7 @@ class FreeRooms extends Component<{}, FreeRoomState> {
       period.duration = period.duration - period_reduced_by * 60;
       period.end.setHours(19);
     }
-    if (period.duration == 0) {
+    if (period.duration === 0) {
       period.visible = false;
     }
     return period;
@@ -184,7 +184,11 @@ class AboutModal extends Component<ModalProps> {
       >
         <p>
           This app shows you free rooms on campus at UNSW, according to the{" "}
-          <a target="_blank" href="https://nss.cse.unsw.edu.au/tt/">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://nss.cse.unsw.edu.au/tt/"
+          >
             timetable
           </a>
           .
@@ -195,17 +199,25 @@ class AboutModal extends Component<ModalProps> {
         </p>
         <p>
           If any data is wrong (or you would like to help make the app look
-          pretty 🎨) please contact me at{" "}
-          <a href="mailto:declan.scott@student.unsw.edu.au" target="_top">
+          pretty{" "}
+          <span aria-label="paint board" role="img">
+            🎨
+          </span>
+          ) please contact me at{" "}
+          <a href="mailto:declan.scott@unsw.edu.au" target="_top">
             my uni email address.
           </a>
         </p>
         <p>
           I (Declan Scott) made this project to learn React and hopefully help
-          people enjoy their time on campus. ❤️ It's open source so check it out
-          on{" "}
+          people enjoy their time on campus.{" "}
+          <span aria-label="paint board" role="img">
+            ❤️
+          </span>{" "}
+          It's open source so check it out on{" "}
           <a
             target="_blank"
+            rel="noopener noreferrer"
             href="https://github.com/declanjscott/uni-room-finder"
           >
             GitHub
