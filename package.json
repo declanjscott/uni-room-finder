@@ -10,7 +10,7 @@
     "@types/react-select": "^2.0.13",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "react-select": "^2.4.1",
     "typescript": "^3.3.3333",
